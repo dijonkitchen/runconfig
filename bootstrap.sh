@@ -5,12 +5,9 @@
 # In your `$HOME` directory,
 # symbolic link these files:
 cd "$HOME" || exit
-ln -s ./.bashrc .
-
-# Optionally link `.gitconfig`
-# or use your own credentials.
-ln -s ./.gitconfig .
-ln -s ./.gitignore_global .
-ln -s ./.gitmessage .
+ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.bashrc .
+ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.gitconfig .
+ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.gitignore_global .
+ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.gitmessage .
 
 cd -
