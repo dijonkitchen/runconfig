@@ -5,7 +5,7 @@
 # In your `$HOME` directory,
 # symbolic link these files:
 cd "$HOME" || exit
-ln -si ./.bashrc .
+ln -s ./.bashrc .
 
 # Optionally link `.gitconfig`
 # or use your own credentials.
