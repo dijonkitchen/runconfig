@@ -208,6 +208,7 @@ if [ -n "${BASH_VERSION}" ]; then
           fi
       fi
   }
+fi
 
   alias cd='cdnvm'
   cdnvm "$PWD" || exit
