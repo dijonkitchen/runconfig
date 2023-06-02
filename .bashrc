@@ -148,7 +148,7 @@ export PROMPT_DIRTRIM=4
 
 # Linuxbrew
 HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
-export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:~/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOME/bin:$PATH"
 
 # For faster typing
 alias ls='ls -la --color=auto'
