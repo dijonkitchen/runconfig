@@ -151,7 +151,7 @@ HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
 export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:~/bin:$PATH"
 
 # For faster typing
-alias ls='ls -FlaG'
+alias ls='ls -la --color=auto'
 alias g='git'
 
 # Javascript
