@@ -10,4 +10,7 @@ ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/.gitconfig .
 ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/.gitignore_global .
 ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/.gitmessage .
 
+# For pants installation
+export PATH=$HOME/bin:$PATH
+
 cd -
