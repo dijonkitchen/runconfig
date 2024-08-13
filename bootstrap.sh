@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # For faster typing
-alias ls='ls -la --color=auto'
-alias g='git'
+echo 'alias ls="ls -la --color=auto"' >> ~/.bashrc
+echo 'alias g="git"' >> ~/.bashrc
 
 # In your `$HOME` directory,
 # symbolic link these files:
