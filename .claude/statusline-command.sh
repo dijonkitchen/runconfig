@@ -45,6 +45,10 @@ if [ -n "$ctx_pct" ]; then
   ctx_suffix=$(printf "${ctx_color}[%d%%]\033[0m" "$ctx_int")
 fi
 
+model_suffix=""
+model_name=$(echo "$input" | jq -r '.model.display_name // .model.id // empty')
+[ -n "$model_name" ] && model_suffix=$(printf '\033[36m[%s]\033[0m ' "$model_name")
+
 cost=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
 cost_suffix=""
 [ -n "$cost" ] && cost_suffix=$(printf ' $%.2f' "$cost")
@@ -94,4 +98,4 @@ if [ -n "$rl_pct" ]; then
   fi
 fi
 
-printf '\033[1m%s\033[0m%s %s%s%s%s' "$short_cwd" "$git_info" "$ctx_suffix" "$tokens_suffix" "$cost_suffix" "$rl_suffix"
+printf '%s\033[1m%s\033[0m%s %s%s%s%s' "$model_suffix" "$short_cwd" "$git_info" "$ctx_suffix" "$tokens_suffix" "$cost_suffix" "$rl_suffix"
