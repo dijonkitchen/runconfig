@@ -53,21 +53,6 @@ cost=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
 cost_suffix=""
 [ -n "$cost" ] && cost_suffix=$(printf ' $%.2f' "$cost")
 
-# Compact token count (e.g. "14.2k tok")
-tokens_suffix=""
-total_tokens=$(echo "$input" | jq -r '.session.total_tokens // empty')
-if [ -n "$total_tokens" ] && [ "$total_tokens" != "0" ]; then
-  tok_int=$(printf '%.0f' "$total_tokens")
-  if [ "$tok_int" -ge 1000000 ]; then
-    tok_fmt=$(awk "BEGIN { printf \"%.1fM\", $tok_int/1000000 }")
-  elif [ "$tok_int" -ge 1000 ]; then
-    tok_fmt=$(awk "BEGIN { printf \"%.1fk\", $tok_int/1000 }")
-  else
-    tok_fmt="$tok_int"
-  fi
-  tokens_suffix=" ${tok_fmt} tok"
-fi
-
 # Rate limit info from JSON input (five_hour window preferred, fall back to seven_day)
 rl_suffix=""
 rl_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
@@ -98,4 +83,4 @@ if [ -n "$rl_pct" ]; then
   fi
 fi
 
-printf '\033[1m%s\033[0m%s%s%s%s%s%s' "$short_cwd" "$git_info" "$model_suffix" "$tokens_suffix" "$ctx_suffix" "$cost_suffix" "$rl_suffix"
+printf '\033[1m%s\033[0m%s%s%s%s%s' "$short_cwd" "$git_info" "$model_suffix" "$ctx_suffix" "$cost_suffix" "$rl_suffix"
