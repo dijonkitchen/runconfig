@@ -20,4 +20,9 @@ echo 'alias be="bundle exec"' >> ~/.zshrc
 cd "$HOME" || exit
 ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/.gitconfig .
 
+# Claude Code settings
+mkdir -p "$HOME/.claude"
+ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/.claude/settings.json "$HOME/.claude/settings.json"
+ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/.claude/statusline-command.sh "$HOME/.claude/statusline-command.sh"
+
 cd -
