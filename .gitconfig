@@ -2,6 +2,9 @@
     editor = vi
     ignorecase = false
 
+[color]
+    ui = always
+
 # Aliases are command shortcuts
 [alias]
     sw = switch
