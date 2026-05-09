@@ -9,8 +9,22 @@ short_cwd="${cwd/#$home/~}"
 
 # Get git branch/status using git-prompt.sh if available
 git_info=""
-git_prompt_sh="/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
-if [ -f "$git_prompt_sh" ]; then
+git_prompt_candidates=(
+  "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+  "/opt/homebrew/etc/bash_completion.d/git-prompt.sh"
+  "/usr/local/etc/bash_completion.d/git-prompt.sh"
+  "/usr/share/git-core/contrib/completion/git-prompt.sh"
+  "/usr/lib/git-core/git-sh-prompt"
+  "/etc/bash_completion.d/git-prompt"
+)
+git_prompt_sh=""
+for candidate in "${git_prompt_candidates[@]}"; do
+  if [ -f "$candidate" ]; then
+    git_prompt_sh="$candidate"
+    break
+  fi
+done
+if [ -n "$git_prompt_sh" ]; then
   export GIT_PS1_SHOWDIRTYSTATE=1
   export GIT_PS1_SHOWSTASHSTATE=1
   export GIT_PS1_SHOWUNTRACKEDFILES=1
